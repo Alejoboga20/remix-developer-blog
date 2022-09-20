@@ -10,7 +10,7 @@ export const loader = async () => {
 };
 
 const Posts = () => {
-  const { posts } = useLoaderData() as LoaderData;
+  const { posts } = useLoaderData() as unknown as LoaderData;
 
   return (
     <main>
@@ -24,6 +24,10 @@ const Posts = () => {
           </li>
         ))}
       </ul>
+
+      <Link to="admin" className="text-red-600 underline">
+        Admin
+      </Link>
     </main>
   );
 };
