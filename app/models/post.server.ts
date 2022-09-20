@@ -1,10 +1,11 @@
 import { prisma } from "~/db.server";
 
-export const getPosts = async (): Promise<Post[]> => {
+export type { Post } from "@prisma/client";
+
+export const getPosts = async () => {
   return prisma.post.findMany();
 };
 
-type Post = {
-  title: string;
-  slug: string;
+export const getPost = async (slug: string) => {
+  return prisma.post.findUnique({ where: { slug } });
 };
